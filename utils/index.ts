@@ -36,6 +36,6 @@ export function getYoutubeVideoId(url: string) {
     return match[1];
   } else {
     // If no match or invalid ID length, return null (or an error message)
-    return null;
+    return "Error";
   }
 }

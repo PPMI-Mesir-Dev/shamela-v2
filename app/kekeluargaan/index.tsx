@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { FlatList, Pressable, SafeAreaView, Text, View } from "react-native";
-import { getKekeluargaan } from "../../services";
+import { getKekeluargaan, PUBLIC_API_URL } from "../../services";
 import { Link } from "expo-router";
 import { Image } from "expo-image";
 
@@ -36,7 +36,7 @@ function KekeluargaanItem({ data }: KekeluargaanItemProps) {
         <View className="flex flex-row h-auto justify-between items-center w-[95%] mx-auto border-b-[0.5px]">
           <View className="basis-4/12 h-32 flex justify-center">
             <Image
-              source={`https://9685-41-237-178-135.ngrok-free.app${data["logo"]["url"]}`}
+              source={`${PUBLIC_API_URL}${data["logo"]["url"]}`}
               contentFit="contain"
               className="h-[75%] rounded-md"
             />

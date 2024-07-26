@@ -17,7 +17,7 @@ export default function GridMenu() {
         <MenuItem title="Berita" href="/news">
           <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
         </MenuItem>
-        <MenuItem title="Publikasi">
+        <MenuItem title="Publikasi" href="/publikasi">
           <Entypo name="news" size={24} color="#c6e1fd" />
         </MenuItem>
         <MenuItem title="Video" href="/video">

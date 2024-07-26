@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
-import { View } from "react-native";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +53,13 @@ export default function Layout() {
           options={{
             headerShown: true,
             title: "Kalender Kegiatan PPMI Mesir",
+          }}
+        />
+        <Stack.Screen
+          name="publikasi/index"
+          options={{
+            headerShown: true,
+            title: "Publikasi PPMI Mesir",
           }}
         />
       </Stack>

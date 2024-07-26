@@ -8,7 +8,7 @@ import RenderHtml from "react-native-render-html";
 import { AntDesign } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { Foundation } from "@expo/vector-icons";
-import { getKekeluargaan } from "../../../services";
+import { getKekeluargaan, PUBLIC_API_URL } from "../../../services";
 import { Stack, useLocalSearchParams } from "expo-router";
 
 export default function Page() {
@@ -43,7 +43,7 @@ export default function Page() {
             }}
           />
           <Image
-            source={`https://9685-41-237-178-135.ngrok-free.app${kekeluargaan["logo"]["url"]}`}
+            source={`${PUBLIC_API_URL}${kekeluargaan["logo"]["url"]}`}
             className="h-[50vw]"
             contentFit="contain"
           />

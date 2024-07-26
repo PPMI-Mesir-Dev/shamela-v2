@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getImage, getRadio, getWihdah } from "../../services";
+import { getImage, getRadio, getWihdah, PUBLIC_API_URL } from "../../services";
 import { SafeAreaView, Text, useWindowDimensions } from "react-native";
 import { useQuery } from "@tanstack/react-query";
 import { View } from "react-native";
@@ -23,7 +23,7 @@ export default function Page() {
       {radioData.isSuccess && (
         <>
           <Image
-            source={`https://9685-41-237-178-135.ngrok-free.app${radioData["data"]["logo"]["url"]}`}
+            source={`${PUBLIC_API_URL}${radioData["data"]["logo"]["url"]}`}
             className="h-[50vw]"
             contentFit="contain"
           />
