@@ -62,6 +62,13 @@ export default function Layout() {
             title: "Publikasi PPMI Mesir",
           }}
         />
+        <Stack.Screen
+          name="pustaka/index"
+          options={{
+            headerShown: true,
+            title: "Pustaka Karya",
+          }}
+        />
       </Stack>
     </QueryClientProvider>
   );

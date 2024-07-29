@@ -1,13 +1,6 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import {
-  Button,
-  FlatList,
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-} from "react-native";
-import { getPublikasi } from "../../services";
+import { FlatList, Pressable, ScrollView, Text, View } from "react-native";
+import { getPustaka } from "../../services";
 import SkeletonPlaceholder from "expo-react-native-skeleton-placeholder";
 import { Ionicons } from "@expo/vector-icons";
 import { Fontisto } from "@expo/vector-icons";
@@ -16,10 +9,10 @@ import { Link } from "expo-router";
 export default function Page() {
   const { isSuccess, data, isLoading, fetchNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: ["publikasi"],
-      queryFn: getPublikasi,
+      queryKey: ["pustaka"],
+      queryFn: getPustaka,
       initialPageParam: 1,
-      getNextPageParam: (lastPage, pages) => lastPage.nextPage,
+      getNextPageParam: (lastPage) => lastPage.nextPage,
     });
 
   return (
@@ -79,7 +72,7 @@ interface PustakaItemProps {
 
 function PustakaItem({ data }: PustakaItemProps) {
   return data?.map((arr: any, index: any) => (
-    <Link href={`/publikasi/${arr.id}`} asChild key={index}>
+    <Link href={`/pustaka/${arr.id}`} asChild key={index}>
       <Pressable>
         <View className="p-5 border-b">
           <Text className="text-lg font-medium" numberOfLines={2}>

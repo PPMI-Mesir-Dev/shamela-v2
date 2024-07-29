@@ -14,7 +14,7 @@ export default function Page() {
   const { width } = useWindowDimensions();
 
   const radioData = useQuery({
-    queryKey: ["wihdah"],
+    queryKey: ["radio"],
     queryFn: getRadio,
   });
 
@@ -23,7 +23,7 @@ export default function Page() {
       {radioData.isSuccess && (
         <>
           <Image
-            source={`${PUBLIC_API_URL}${radioData["data"]["logo"]["url"]}`}
+            source={`${PUBLIC_API_URL}${radioData["data"]["logo"]?.radio}`}
             className="h-[50vw]"
             contentFit="contain"
           />

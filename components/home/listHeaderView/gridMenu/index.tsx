@@ -3,7 +3,6 @@ import {
   FontAwesome,
   Entypo,
   Foundation,
-  FontAwesome6,
   AntDesign,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
@@ -29,19 +28,16 @@ export default function GridMenu() {
         <MenuItem title="Kekeluargaan" href="/kekeluargaan">
           <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
         </MenuItem>
-        <MenuItem title="Kesehatan">
+        {/* <MenuItem title="Kesehatan">
           <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem title="Radio" href="/radio">
           <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
-        </MenuItem>
-        <MenuItem title="Jadwal Solat">
-          <FontAwesome6 name="mosque" size={24} color="#c6e1fd" />
         </MenuItem>
         <MenuItem title="Kalender" href="/kalender">
           <AntDesign name="calendar" size={24} color="#c6e1fd" />
         </MenuItem>
-        <MenuItem title="Pustaka">
+        <MenuItem title="Pustaka" href="/pustaka">
           <MaterialCommunityIcons name="bookshelf" size={24} color="#c6e1fd" />
         </MenuItem>
       </View>
