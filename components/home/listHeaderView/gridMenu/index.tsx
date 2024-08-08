@@ -22,16 +22,7 @@ export default function GridMenu() {
         <MenuItem title="Video" href="/video">
           <Foundation name="play-video" size={24} color="#c6e1fd" />
         </MenuItem>
-        <MenuItem title="Wihdah" href="/wihdah">
-          <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
-        </MenuItem>
         <MenuItem title="Kekeluargaan" href="/kekeluargaan">
-          <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
-        </MenuItem>
-        {/* <MenuItem title="Kesehatan">
-          <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
-        </MenuItem> */}
-        <MenuItem title="Radio" href="/radio">
           <FontAwesome name="newspaper-o" size={24} color="#c6e1fd" />
         </MenuItem>
         <MenuItem title="Kalender" href="/kalender">
@@ -39,6 +30,9 @@ export default function GridMenu() {
         </MenuItem>
         <MenuItem title="Pustaka" href="/pustaka">
           <MaterialCommunityIcons name="bookshelf" size={24} color="#c6e1fd" />
+        </MenuItem>
+        <MenuItem title="Lembaga Otonom" href="/badan-otonom">
+          <FontAwesome name="institution" size={24} color="#c6e1fd" />
         </MenuItem>
       </View>
     </View>

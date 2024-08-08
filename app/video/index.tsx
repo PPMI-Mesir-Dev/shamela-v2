@@ -7,6 +7,7 @@ import { Image } from "expo-image";
 import { Link } from "expo-router";
 
 import { Octicons, FontAwesome6 } from "@expo/vector-icons";
+import SkeletonPlaceholder from "expo-react-native-skeleton-placeholder";
 
 export default function Page() {
   const [videos, setVideos] = useState([]);
@@ -28,7 +29,7 @@ export default function Page() {
         <Text className="text-lg font-semibold text-gray-600 mb-2">
           Featured Playlist
         </Text>
-        {videos && (
+        {videos && isSuccess ? (
           <View>
             <FlatList
               showsHorizontalScrollIndicator={false}
@@ -37,20 +38,76 @@ export default function Page() {
               renderItem={(item) => <FeaturedCard data={item.item} />}
             />
           </View>
+        ) : (
+          <View className="h-[50vw] w-[70vw]">
+            <SkeletonPlaceholder>
+              <>
+                <View
+                  style={{
+                    height: "85%",
+                    width: "100%",
+                  }}
+                ></View>
+                <Text
+                  style={{ lineHeight: 15, marginTop: 5, width: "70%" }}
+                ></Text>
+                <Text style={{ lineHeight: 15, width: "70%" }}></Text>
+              </>
+            </SkeletonPlaceholder>
+          </View>
         )}
       </View>
-      <View className="">
-        <Text className="text-lg font-semibold text-gray-600 mb-2">
-          Playlist Lainnya
-        </Text>
-        {videos && (
-          <View>
+      <View>
+        <View>
+          <Text className="text-lg font-semibold text-gray-600 mb-2">
+            Playlist Lainnya
+          </Text>
+        </View>
+        <View>
+          {videos && isSuccess ? (
             <FlatList
               data={videos.filter((arr) => arr["featured"] === "no")}
               renderItem={(item) => <FeaturedCardList data={item.item} />}
             />
-          </View>
-        )}
+          ) : (
+            <View className="w-[95%] mx-auto mb-5">
+              {Array(1, 2, 3, 5).map((arr, index) => (
+                <SkeletonPlaceholder key={index}>
+                  <View
+                    style={{
+                      width: "100%",
+                      paddingVertical: 20,
+                      flexDirection: "row",
+                      alignItems: "center",
+                      gap: 10,
+                    }}
+                  >
+                    <View
+                      style={{
+                        width: "40%",
+                      }}
+                    >
+                      <View
+                        style={{
+                          width: "100%",
+                          height: 100,
+                        }}
+                      ></View>
+                    </View>
+                    <View
+                      style={{
+                        width: "65%",
+                      }}
+                    >
+                      <Text style={{ lineHeight: 25, width: "80%" }}></Text>
+                      <Text style={{ lineHeight: 25, width: "80%" }}></Text>
+                    </View>
+                  </View>
+                </SkeletonPlaceholder>
+              ))}
+            </View>
+          )}
+        </View>
       </View>
     </ScrollView>
   );

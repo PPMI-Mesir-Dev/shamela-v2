@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import Animated, {
@@ -70,7 +71,7 @@ export default function One() {
   };
 
   return (
-    <View className="h-screen w-screen flex justify-center items-center flex-col gap-5">
+    <View className="h-full w-screen flex justify-center items-center flex-col gap-5 bg-white">
       <View>
         <View className="flex flex-row gap-2">
           <Animated.Text
@@ -106,11 +107,13 @@ export default function One() {
           opacity: opacity5,
         }}
       >
-        <Pressable className=" bg-secondary rounded-md">
-          <Text className=" text-2xl font-bold text-primary my-2 mx-7">
-            Mulai
-          </Text>
-        </Pressable>
+        <Link href={"/"} asChild>
+          <Pressable className=" bg-secondary rounded-md">
+            <Text className=" text-2xl font-bold text-primary my-2 mx-7">
+              Mulai
+            </Text>
+          </Pressable>
+        </Link>
       </Animated.View>
     </View>
   );

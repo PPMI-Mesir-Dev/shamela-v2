@@ -28,24 +28,10 @@ export default function Layout() {
           }}
         />
         <Stack.Screen
-          name="wihdah/index"
-          options={{
-            headerShown: true,
-            title: "Wihdah PPMI Mesir",
-          }}
-        />
-        <Stack.Screen
           name="kekeluargaan/index"
           options={{
             headerShown: true,
             title: "Kekeluargaan Nusantara",
-          }}
-        />
-        <Stack.Screen
-          name="radio/index"
-          options={{
-            headerShown: true,
-            title: "Radio PPMI Mesir",
           }}
         />
         <Stack.Screen
@@ -67,6 +53,13 @@ export default function Layout() {
           options={{
             headerShown: true,
             title: "Pustaka Karya",
+          }}
+        />
+        <Stack.Screen
+          name="badan-otonom/index"
+          options={{
+            headerShown: true,
+            title: "Lembaga Otonom PPMI",
           }}
         />
       </Stack>

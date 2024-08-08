@@ -3,31 +3,36 @@ import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import { newsFilterData } from "../../../utils";
 import { NewsItem } from "../../etc";
-import { useGetNews } from "../../../hooks";
+import Entypo from "@expo/vector-icons/Entypo";
 import SkeletonPlaceholder from "expo-react-native-skeleton-placeholder";
 import { useWindowDimensions } from "react-native";
+import { useQuery } from "@tanstack/react-query";
+import { getNews } from "../../../services";
 
 export default function HomeScrollView() {
   const [homeListData, setHomeListData] = useState<any>();
-  const [
-    { isLoading, isSuccess, data, error, fetchNextPage, isFetchingNextPage },
-  ] = useGetNews();
+  const result = useQuery({
+    queryKey: ["news"],
+    queryFn: getNews,
+  });
+
   const { width } = useWindowDimensions();
 
   useEffect(() => {
-    if (isSuccess) {
-      const newsFilter = newsFilterData(data.pages[0]);
-      setHomeListData(newsFilter.slice(0, 5));
+    if (result.isSuccess) {
+      const newsFilter = newsFilterData(result.data);
+      setHomeListData(newsFilter.slice(0, 3));
     }
-  }, [isSuccess]);
+  }, [result.isSuccess]);
 
   return (
     <View>
-      <View className="w-[95%] mx-auto mt-5 mb-3 border-l-4">
-        <Link href={"/"} className="ml-2 flex justify-between flex-col">
-          <Text className="text-secondary font-bold text-xl ">
-            Berita PPMI Mesir
-          </Text>
+      <View className="w-[95%] mx-auto mt-5 mb-3 border-l-4 flex-row items-center justify-between">
+        <Text className="text-secondary font-bold text-xl ml-2">
+          Berita PPMI Mesir
+        </Text>
+        <Link href={"/news"} className="ml-2 flex justify-between flex-col">
+          <Entypo name="chevron-right" size={24} color="#0a184f" />
         </Link>
       </View>
       {homeListData ? (

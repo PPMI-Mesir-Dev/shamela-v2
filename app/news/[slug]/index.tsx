@@ -1,26 +1,28 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { ScrollView, Text, useWindowDimensions, View } from "react-native";
-import { useGetNews } from "../../../hooks";
-import { newsFilterData } from "../../../utils";
 import { Image } from "expo-image";
 import RenderHtml from "react-native-render-html";
+import { useQuery } from "@tanstack/react-query";
+import { getSinglePost } from "../../../services";
+import { newsFilterData } from "../../../utils";
+import SkeletonPlaceholder from "expo-react-native-skeleton-placeholder";
 
 export default function Page() {
   const params = useLocalSearchParams();
 
   const [newsData, setNewsData] = useState<any>();
-  const [{ isLoading, isSuccess, data, error }] = useGetNews();
+  const result = useQuery({
+    queryKey: ["news", params["slug"]],
+    queryFn: getSinglePost,
+  });
   const { width } = useWindowDimensions();
 
   useEffect(() => {
-    if (isSuccess) {
-      const filterData = data.filter(
-        (arr: any) => arr["slug"] === params["slug"]
-      );
-      setNewsData(newsFilterData(filterData)[0]);
+    if (result.isSuccess) {
+      setNewsData(newsFilterData(result.data));
     }
-  }, [isSuccess]);
+  }, [result.isSuccess]);
 
   return (
     <>
@@ -30,7 +32,7 @@ export default function Page() {
           title: "Shamela PPMI Mesir",
         }}
       />
-      {isSuccess && newsData && (
+      {result.isSuccess && newsData ? (
         <ScrollView className="px-5 pt-3 bg-white">
           <View>
             <Text>{newsData["date"]}</Text>
@@ -70,6 +72,36 @@ export default function Page() {
             </View>
           </View>
         </ScrollView>
+      ) : (
+        <View className="w-full mb-5 h-screen pt-3 bg-white">
+          <View className="w-[95%] mx-auto pt-3">
+            <SkeletonPlaceholder>
+              <View
+                style={{
+                  height: 400,
+                }}
+              >
+                <Text
+                  style={{
+                    lineHeight: 15,
+                    marginBottom: 10,
+                    width: "40%",
+                  }}
+                ></Text>
+                <Text style={{ lineHeight: 25, width: "80%" }}></Text>
+                <Text style={{ lineHeight: 25, width: "80%" }}></Text>
+                <Text style={{ lineHeight: 25, width: "80%" }}></Text>
+                <View
+                  style={{
+                    height: 1000,
+                    width: "100%",
+                    marginTop: 20,
+                  }}
+                ></View>
+              </View>
+            </SkeletonPlaceholder>
+          </View>
+        </View>
       )}
     </>
   );

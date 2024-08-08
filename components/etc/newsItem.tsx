@@ -8,7 +8,7 @@ interface NewsItemProps {
 
 export default function NewsItem({ data }: NewsItemProps) {
   return (
-    <Link href={`/news/${data["slug"]}`} asChild>
+    <Link href={`/news/${data["id"]}`} asChild>
       <Pressable>
         <View className="flex flex-row h-auto justify-between items-center w-[95%] mx-auto border-b-[0.5px]">
           <View className="w-[60%] h-32">
