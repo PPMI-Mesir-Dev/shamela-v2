@@ -1,4 +1,4 @@
-package com.ppmimesir.shamelaa
+package com.ppmimesir.shamela
 
 import android.os.Build
 import android.os.Bundle

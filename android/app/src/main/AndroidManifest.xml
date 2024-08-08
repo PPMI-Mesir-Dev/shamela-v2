@@ -28,7 +28,7 @@
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
         <data android:scheme="shamela"/>
-        <data android:scheme="com.ppmimesir.shamelaa"/>
+        <data android:scheme="com.ppmimesir.shamela"/>
         <data android:scheme="exp+shamela-v2"/>
       </intent-filter>
     </activity>

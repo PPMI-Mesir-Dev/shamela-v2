@@ -7,13 +7,12 @@ import { Link } from "expo-router";
 import { getAgenda, getHimbauan, PUBLIC_API_URL } from "../../services";
 import { useQuery } from "@tanstack/react-query";
 import { Image } from "expo-image";
-import One from "../onboarding/one";
+
 const blurhash = "LEHLk~WB2yk8pyo0adR*.7kCMdnj";
 
 export default function Home() {
   return (
     <ScrollView className="bg-white h-full">
-      {/* <One /> */}
       <ListHeaderView />
       <HomeScrollView />
       <AgendaView />
